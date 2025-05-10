@@ -1,0 +1,42 @@
+"Phrases"
+{
+	"#IRAPluginDisabled"
+	{
+		"ru"			"{red}▶ Администратор мгновенного возрождения на данный момент отключен."
+	}
+
+	"#IRAActivated"
+	{
+		"ru"			"{olive}▶ Мгновенное возрождение: {lime}ВКЛ."
+	}
+
+	"#IRADisabled"
+	{
+		"ru"			"{darkred}▶ Мгновенное возрождение: {red}ОТКЛЮЧЕНО."
+	}
+
+	"#IRAHudText"
+	{
+		"ru"			"Мгновенное возрождение: ВКЛ ◀"
+	}
+
+	"#IRAAdminTarget"
+	{
+		"ru"			"{olive}▶ Мгновенное возрождение включено для {lime}"
+	}
+
+	"#IRAAdminClient"
+	{
+		"ru"			"{olive}▶ Администратор активировал {lime}у вас функцию мгновенного возрождения!"
+	}
+
+	"#IRAAdminTargetDisabled"
+	{
+		"ru"			"{darkred}▶ Мгновенное возрождение отключено для {red} "
+	}
+
+	"#IRAAdminClientDisabled"
+	{
+		"ru"			"{darkred}▶ Ваше мгновенное возрождение {red}отключено!"
+	}
+}

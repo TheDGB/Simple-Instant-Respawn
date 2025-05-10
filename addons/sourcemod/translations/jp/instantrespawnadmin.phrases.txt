@@ -1,0 +1,42 @@
+"Phrases"
+{
+	"#IRAPluginDisabled"
+	{
+		"jp"			"{red}▶ インスタント リスポーン アドミンは現在無効になっています。"
+	}
+
+	"#IRAActivated"
+	{
+		"jp"			"{red}▶ インスタント リスポン アドミンは現在有効になっています。"
+	}
+
+	"#IRADisabled"
+	{
+		"jp"			"{darkred}▶ インスタントリスポーン: {red}無効。"
+	}
+
+	"#IRAHudText"
+	{
+		"jp"			"インスタントリスポーン: オン ◀"
+	}
+
+	"#IRAAdminTarget"
+	{
+		"jp"			"{olive}▶ {lime} のインスタントリスポーンが有効になりました"
+	}
+
+	"#IRAAdminClient"
+	{
+		"jp"			"{olive}▶ 管理者があなたの{lime}instant-respawnを有効にしました。"
+	}
+
+	"#IRAAdminTargetDisabled"
+	{
+		"jp"			"{darkred}▶ {red}の即時復活は無効 "
+	}
+
+	"#IRAAdminClientDisabled"
+	{
+		"jp"			"{darkred}▶ インスタントリスポーンは{red}無効になりました！"
+	}
+}

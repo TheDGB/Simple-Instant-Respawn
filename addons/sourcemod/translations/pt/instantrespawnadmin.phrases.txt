@@ -1,0 +1,42 @@
+"Phrases"
+{
+	"#IRAPluginDisabled"
+	{
+		"pt"			"{red}▶ Instant Respawn Admin desativado por enquanto."
+	}
+
+	"#IRAActivated"
+	{
+		"pt"			"{olive}▶ Instant Respawn: {lime}LIGADO."
+	}
+
+	"#IRADisabled"
+	{
+		"pt"			"{darkred}▶ Instant Respawn: {red}DESATIVADO."
+	}
+
+	"#IRAHudText"
+	{
+		"pt"			"Instant Respawn: ATIVADO ◀"
+	}
+
+	"#IRAAdminTarget"
+	{
+		"pt"			"{olive}▶ Instant Respawn ativado para {lime}"
+	}
+
+	"#IRAAdminClient"
+	{
+		"pt"			"{olive}▶ Um administrador ativou o {lime}instant-respawn para você!"
+	}
+
+	"#IRAAdminTargetDisabled"
+	{
+		"pt"			"{darkred}▶ Instant respawn desabilitado para {red} "
+	}
+
+	"#IRAAdminClientDisabled"
+	{
+		"pt"			"{darkred}▶ Seu instant-respawn foi {red}desativado!"
+	}
+}

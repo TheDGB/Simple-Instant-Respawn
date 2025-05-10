@@ -1,0 +1,42 @@
+"Phrases"
+{
+	"#IRAPluginDisabled"
+	{
+		"chi"			"{red}▶ 即时重生管理员目前已禁用。。。"
+	}
+
+	"#IRAActivated"
+	{
+		"chi"			"{olive}▶ 即时重生：{lime}开启。"
+	}
+
+	"#IRADisabled"
+	{
+		"chi"			"{darkred}▶ 即时重生：{red}已禁用。"
+	}
+
+	"#IRAHudText"
+	{
+		"chi"			"即时重生：开启 ◀"
+	}
+
+	"#IRAAdminTarget"
+	{
+		"chi"			"{olive}▶ 为 {lime} 启用即时重生"
+	}
+
+	"#IRAAdminClient"
+	{
+		"chi"			"{olive}▶ 管理员已在您体内激活 {lime}instant-respawn！"
+	}
+
+	"#IRAAdminTargetDisabled"
+	{
+		"chi"			"{darkred}▶ {red} 已禁用即时重生 "
+	}
+
+	"#IRAAdminClientDisabled"
+	{
+		"chi"			"{darkred}▶ 您的即时重生已被{red}禁用！"
+	}
+}

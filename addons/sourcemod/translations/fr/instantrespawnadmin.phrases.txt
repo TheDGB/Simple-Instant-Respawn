@@ -1,0 +1,42 @@
+"Phrases"
+{
+	"#IRAPluginDisabled"
+	{
+		"fr"			"{red}▶ L'administrateur de réapparition instantanée est désactivé pour le moment."
+	}
+
+	"#IRAActivated"
+	{
+		"fr"			"{olive}▶ Réapparition instantanée : {lime}ON."
+	}
+
+	"#IRADisabled"
+	{
+		"fr"			"{darkred}▶ Réapparition instantanée : {red}DÉSACTIVÉ."
+	}
+
+	"#IRAHudText"
+	{
+		"fr"			"Réapparition instantanée : ACTIVÉ ◀"
+	}
+
+	"#IRAAdminTarget"
+	{
+		"fr"			"{olive}▶ Réapparition instantanée {lime}activée pour"
+	}
+
+	"#IRAAdminClient"
+	{
+		"fr"			"{olive}▶ Un administrateur a activé {lime}instant-respawn en vous!"
+	}
+
+	"#IRAAdminTargetDisabled"
+	{
+		"fr"			"{darkred}▶ Réapparition instantanée {red}désactivée pour "
+	}
+
+	"#IRAAdminClientDisabled"
+	{
+		"fr"			"{darkred}▶ Votre réapparition instantanée a été {red}désactivée!"
+	}
+}
