@@ -16,12 +16,12 @@ Do you have a suggestion for the plugin? You can make a **pull request!**
 
 #### Commands
 
-| **Commands**                                  | **Value**         | **Description**                                             |
-|-----------------------------------------------|-------------------|-------------------------------------------------------------|
-| `sm_norespawn`                                | `1`               | Enables instant respawn for yourself.                       |
-| `sm_selfinstarespawn`                         | `1`               | Enables instant respawn for yourself.                       |
-| `sm_instarespawn`                             | `name`            | Enables instant respawn for a player.                       |
-| `sm_setinstantrespawn`                        | `name`            | Enables instant respawn for a player.                       |
+| **Commands**                                  | **Description**                                             |
+|-----------------------------------------------|-------------------------------------------------------------|
+| `sm_norespawn`                                | Enables instant respawn for yourself.                       |
+| `sm_selfinstarespawn`                         | Enables instant respawn for yourself.                       |
+| `sm_instarespawn`                             | Enables instant respawn for a player.                       |
+| `sm_setinstantrespawn`                        | Enables instant respawn for a player.                       |
 
 #### Dependencies.
 - [Sourcemod 1.12+](https://www.sourcemod.net/downloads.php)
