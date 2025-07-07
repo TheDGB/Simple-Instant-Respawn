@@ -32,4 +32,4 @@ Do you have a suggestion for the plugin? You can make a **pull request!**
 
 # **Enjoy the plugin!**
 
-[![](https://dcbadge.vercel.app/api/server/xftqrvZSAw)](https://discord.gg/xftqrvZSAw)
+[![](https://dcbadge.limes.pink/api/server/xftqrvZSAw)](https://discord.gg/xftqrvZSAw)
