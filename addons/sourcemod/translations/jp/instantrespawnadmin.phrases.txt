@@ -39,4 +39,9 @@
 	{
 		"jp"			"{darkred}▶ インスタントリスポーンは{red}無効になりました！"
 	}
+
+	"#IRAAffectedCount"
+	{
+		"jp"			"{darkred}▶ 即時リスポーンが {green}%d 人のプレイヤーに更新されました。"
+	}
 }

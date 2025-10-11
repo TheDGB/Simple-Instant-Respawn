@@ -39,4 +39,9 @@
 	{
 		"da"			"{darkred}▶ Dein Instant-Respawn wurde {red}deaktiviert!"
 	}
+
+	"#IRAAffectedCount"
+	{
+		"da"			"{darkred}▶ Instant-Respawn wurde auf {green} %d Spieler aktualisiert."
+	}
 }

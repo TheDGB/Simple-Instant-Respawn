@@ -39,4 +39,9 @@
 	{
 		"fr"			"{darkred}▶ Votre réapparition instantanée a été {red}désactivée!"
 	}
+
+	"#IRAAffectedCount"
+	{
+		"fr"			"{darkred}▶ La instant-respawn a été mise à jour pour {green}%d joueurs."
+	}
 }

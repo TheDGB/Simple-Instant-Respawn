@@ -39,4 +39,9 @@
 	{
 		"chi"			"{darkred}▶ 您的即时重生已被{red}禁用！"
 	}
+
+	"#IRAAffectedCount"
+	{
+		"chi"			"{darkred}▶ 即时重生已更新为 {green}%d 名玩家。"
+	}
 }

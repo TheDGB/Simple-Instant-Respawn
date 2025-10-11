@@ -39,4 +39,9 @@
 	{
 		"pt"			"{darkred}▶ Seu instant-respawn foi {red}desativado!"
 	}
+
+	"#IRAAffectedCount"
+	{
+		"pt"			"{darkred}▶ O instant-respawn foi atualizado para {green}%d jogadores."
+	}
 }
