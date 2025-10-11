@@ -16,7 +16,7 @@ Do you have a suggestion for the plugin? You can make a **pull request!**
 | `sm_instantrespawnadmin_waitingforplayers`    | `1`               | Enable instant respawn for everyone during 'Waiting for players' state.                       |
 | `sm_instantrespawnadmin_adminonly`            | `0`               | If enabled, only admins with the specified flag can receive instant respawn.                  |
 | `sm_instantrespawnadmin_adminflag`            | `b`               | Admin flag required to receive instant respawn if sm_instantrespawnadmin_adminonly is enabled.|
-| `"sm_instantrespawnadmin_all`                 | `0`               | Automatically enable instant respawn for every player who joins the server.                   |
+| `sm_instantrespawnadmin_all`                 | `0`               | Automatically enable instant respawn for every player who joins the server.                   |
 | `sm_instantrespawnadmin_bots`                 | `1`               | Allow bots to have instant respawn.                                                           |
 
 #### Commands
