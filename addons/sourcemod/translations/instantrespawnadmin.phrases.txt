@@ -42,6 +42,11 @@
 
 	"#IRAAffectedCount"
 	{
-		"en"			"{darkred}▶ Instant respawn has been updated to {green}%d players."
+		"en"			"{olive}▶ Instant respawn has been updated to {lime}%d players."
+	}
+
+	"#IRATargetNoFlag"
+	{
+		"en"			"{darkred}▶ Could not toggle Instant Respawn for %d: Target does not have the required admin flag permissions."
 	}
 }

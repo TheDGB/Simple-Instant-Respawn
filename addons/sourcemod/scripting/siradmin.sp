@@ -11,7 +11,7 @@
 
 #define PLUGIN_NAME "Simple Instant Admin Respawn"
 #define PLUGIN_AUTHOR "DGB"
-#define PLUGIN_VERSION "2.1"
+#define PLUGIN_VERSION "2.2"
 
 // Convars
 ConVar g_hCvarEnabled;
@@ -24,6 +24,7 @@ ConVar g_hCvarEnableBots;
 
 // Handlers
 Handle g_hInstantRespawnHudTimer[MAXPLAYERS+1];
+Handle g_hHudSync;
 
 // Bools
 bool g_bInstantRespawn[MAXPLAYERS+1];
@@ -71,6 +72,11 @@ public void OnPluginStart()
     AutoExecConfig(true, "plugin.instantrespawnadmin");
 }
 
+public void OnMapStart()
+{
+    g_hHudSync = CreateHudSynchronizer();
+}
+
 public void OnConfigsExecuted()
 {
     char sFlag[8];
@@ -100,25 +106,19 @@ public void OnClientPutInServer(int client)
         {
             return;
         }
-        if (g_hCvarAdminOnly.BoolValue)
-        {
-            if (HasAdminFlag(client))
-            {
-                g_bInstantRespawn[client] = true;
-                if (g_hCvarHudEnable.BoolValue)
-                {
-                    StartInstantRespawnHudTimer(client);
-                }
-            }
-        }
-        else
+        if (CanReceiveInstantRespawn(client))
         {
             g_bInstantRespawn[client] = true;
-            if (g_hCvarHudEnable.BoolValue)
-            {
-                StartInstantRespawnHudTimer(client);
-            }
         }
+    }
+
+    if (g_bWaitingForPlayers && g_hCvarWaitingForPlayers.BoolValue)
+    {
+        StartInstantRespawnHudTimer(client);
+    }
+    else if (g_bInstantRespawn[client])
+    {
+        StartInstantRespawnHudTimer(client);
     }
 }
 
@@ -142,20 +142,43 @@ public void Event_PlayerDeath(Event event, const char[] name, bool dontBroadcast
     }
 }
 
-bool HasAdminFlag(int client)
+bool CanReceiveInstantRespawn(int client)
 {
-    AdminId id = GetUserAdmin(client);
-    return (id != INVALID_ADMIN_ID && (GetAdminFlags(id, Access_Real) & view_as<int>(g_AdminFlag)));
+    if (!g_hCvarAdminOnly.BoolValue)
+    {
+        return true;
+    }
+    return CheckCommandAccess(client, "sm_instantrespawn_receive", view_as<int>(g_AdminFlag));
 }
 
 public void TF2_OnWaitingForPlayersStart()
 {
     g_bWaitingForPlayers = true;
+    if (g_hCvarWaitingForPlayers.BoolValue && g_hCvarHudEnable.BoolValue)
+    {
+        for (int i = 1; i <= MaxClients; i++)
+        {
+            if (IsClientInGame(i))
+            {
+                StartInstantRespawnHudTimer(i);
+            }
+        }
+    }
 }
 
 public void TF2_OnWaitingForPlayersEnd()
 {
     g_bWaitingForPlayers = false;
+    if (g_hCvarWaitingForPlayers.BoolValue && g_hCvarHudEnable.BoolValue)
+    {
+        for (int i = 1; i <= MaxClients; i++)
+        {
+            if (IsClientInGame(i) && !g_bInstantRespawn[i])
+            {
+                StopInstantRespawnHudTimer(i);
+            }
+        }
+    }
 }
 
 // /////////////////////////////////
@@ -174,21 +197,24 @@ public Action Command_NoRespawn(int client, int args)
     if (!IsClientInGame(client))
         return Plugin_Handled;
 
+    if (!g_bInstantRespawn[client] && !CanReceiveInstantRespawn(client)) {
+        CPrintToChat(client, "%t", "#IRANoPermission");
+        return Plugin_Handled;
+    }
+
     g_bInstantRespawn[client] = !g_bInstantRespawn[client];
 
     if (g_bInstantRespawn[client])
     {
         CPrintToChat(client, "%t", "#IRAActivated");
-
-        if(g_hCvarHudEnable.BoolValue)
-        {
-            StartInstantRespawnHudTimer(client);
-        }
+        StartInstantRespawnHudTimer(client);
     }
     else
     {
         CPrintToChat(client, "%t", "#IRADisabled");
-        StopInstantRespawnHudTimer(client);
+        if (!g_bWaitingForPlayers || !g_hCvarWaitingForPlayers.BoolValue) {
+            StopInstantRespawnHudTimer(client);
+        }
     }
 
     return Plugin_Handled;
@@ -244,22 +270,19 @@ public Action Command_InstaRespawn(int client, int args)
             continue;
         }
 
-        if (g_hCvarAdminOnly.BoolValue)
-        {
-            if (!HasAdminFlag(iTargetClient))
-            {
-                if (client != 0)
-                {
-                    CPrintToChat(client, "%t", "Unable To Target");
-                }
-                continue;
-            }
-        }
-
         bool bNewState;
         if (iState == 0) bNewState = false;
         else if (iState == 1) bNewState = true;
         else bNewState = !g_bInstantRespawn[iTargetClient];
+
+        if (bNewState && !CanReceiveInstantRespawn(iTargetClient))
+        {
+            if (client != 0)
+            {
+                CReplyToCommand(client, "%t", "#IRATargetNoFlag", iTargetClient);
+            }
+            continue;
+        }
 
         g_bInstantRespawn[iTargetClient] = bNewState;
         iAffectedCount++;
@@ -268,17 +291,15 @@ public Action Command_InstaRespawn(int client, int args)
         {
             if (client != iTargetClient) CPrintToChat(client, "%t %N", "#IRAAdminTarget", iTargetClient);
             CPrintToChat(iTargetClient, "%t", "#IRAActivated");
-
-            if (g_hCvarHudEnable.BoolValue)
-            {
-                StartInstantRespawnHudTimer(iTargetClient);
-            }
+            StartInstantRespawnHudTimer(iTargetClient);
         }
         else
         {
             if (client != iTargetClient) CPrintToChat(client, "%t %N", "#IRAAdminTargetDisabled", iTargetClient);
             CPrintToChat(iTargetClient, "%t", "#IRADisabled");
-            StopInstantRespawnHudTimer(iTargetClient);
+            if (!g_bWaitingForPlayers || !g_hCvarWaitingForPlayers.BoolValue) {
+                 StopInstantRespawnHudTimer(iTargetClient);
+            }
         }
     }
 
@@ -298,8 +319,10 @@ public Action Command_InstaRespawn(int client, int args)
 
 void StartInstantRespawnHudTimer(int client)
 {
-    StopInstantRespawnHudTimer(client);
-    g_hInstantRespawnHudTimer[client] = CreateTimer(1.0, Timer_InstantRespawnHUD, GetClientUserId(client), TIMER_REPEAT | TIMER_FLAG_NO_MAPCHANGE);
+    if (g_hCvarHudEnable.BoolValue && g_hInstantRespawnHudTimer[client] == null)
+    {
+        g_hInstantRespawnHudTimer[client] = CreateTimer(1.0, Timer_InstantRespawnHUD, GetClientUserId(client), TIMER_REPEAT | TIMER_FLAG_NO_MAPCHANGE);
+    }
 }
 
 void StopInstantRespawnHudTimer(int client)
@@ -315,7 +338,8 @@ public Action Timer_InstantRespawnHUD(Handle timer, any userid)
 {
     int client = GetClientOfUserId(userid);
 
-    if (client == 0 || !IsClientInGame(client) || !g_bInstantRespawn[client])
+    if (client == 0 || !IsClientInGame(client)
+        || (!g_bInstantRespawn[client] && !(g_hCvarWaitingForPlayers.BoolValue && g_bWaitingForPlayers)))
     {
         if (client > 0 && client <= MaxClients)
         {
@@ -324,8 +348,11 @@ public Action Timer_InstantRespawnHUD(Handle timer, any userid)
         return Plugin_Stop;
     }
 
-    SetHudTextParams(-0.10, -0.83, 1.1, 255, 0, 0, 255);
-    ShowSyncHudText(client, CreateHudSynchronizer(), "%t", "#IRAHudText");
+    if (g_bInstantRespawn[client] || (g_hCvarWaitingForPlayers.BoolValue && g_bWaitingForPlayers))
+    {
+        SetHudTextParams(-0.10, -0.83, 1.1, 255, 0, 0, 255);
+        ShowSyncHudText(client, g_hHudSync, "%t", "#IRAHudText");
+    }
 
     return Plugin_Continue;
 }

@@ -42,6 +42,11 @@
 
 	"#IRAAffectedCount"
 	{
-		"jp"			"{darkred}▶ 即時リスポーンが {green}%d 人のプレイヤーに更新されました。"
+		"jp"			"{olive}▶ 即時リスポーンが {lime}%d 人のプレイヤーに更新されました。"
+	}
+
+	"#IRATargetNoFlag"
+	{
+		"jp"			"{darkred}▶ %d のインスタントリスポーンを切り替えられません：対象に必要な管理者権限がありません。"
 	}
 }

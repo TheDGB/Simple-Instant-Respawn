@@ -42,6 +42,11 @@
 
 	"#IRAAffectedCount"
 	{
-		"da"			"{darkred}▶ Instant-Respawn wurde auf {green} %d Spieler aktualisiert."
+		"da"			"{olive}▶ Instant-Respawn wurde auf {lime} %d Spieler aktualisiert."
+	}
+
+	"#IRATargetNoFlag"
+	{
+		"da"			"{darkred}▶ Kunne ikke skifte Instant Respawn for %d: Målet har ikke de nødvendige admin-flagrettigheder."
 	}
 }

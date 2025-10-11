@@ -42,6 +42,11 @@
 
 	"#IRAAffectedCount"
 	{
-		"es"			"{darkred}▶ El instant-respawn se ha actualizado a {green}%d jugadores."
+		"es"			"{olive}▶ El instant-respawn se ha actualizado a {lime}%d jugadores."
+	}
+
+	"#IRATargetNoFlag"
+	{
+		"es"			"{darkred}▶ No se pudo activar/desactivar Instant Respawn para %d: El objetivo no tiene los permisos de administrador requeridos."
 	}
 }

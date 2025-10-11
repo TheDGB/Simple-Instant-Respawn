@@ -42,6 +42,11 @@
 
 	"#IRAAffectedCount"
 	{
-		"chi"			"{darkred}▶ 即时重生已更新为 {green}%d 名玩家。"
+		"chi"			"{olive}▶ 即时重生已更新为 {lime}%d 名玩家。"
+	}
+
+	"#IRATargetNoFlag"
+	{
+		"chi"			"{darkred}▶ 无法为 %d 切换即时重生：目标没有所需的管理员权限标志。"
 	}
 }
