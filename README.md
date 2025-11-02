@@ -38,3 +38,5 @@ Do you have a suggestion for the plugin? You can make a **pull request!**
 # **Enjoy the plugin!**
 
 [![](https://dcbadge.limes.pink/api/server/xftqrvZSAw)](https://discord.gg/xftqrvZSAw)
+
+[![](http://fastdl.optr.me:8090/embed/steamgroup.png)](https://steamcommunity.com/groups/optr-me)
